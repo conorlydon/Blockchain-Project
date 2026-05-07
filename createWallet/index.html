@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Wallet</title>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="../createWallet/index.html" class="active">Create Wallet</a>
+    <a href="../checkBalance/index.html">Check Balance</a>
+    <a href="../buyTicket/index.html">Buy Ticket</a>
+    <a href="../returnTicket/index.html">Return Ticket</a>
+    <a href="../doorman/index.html">Doorman</a>
+</nav>
+
+<div class="card">
+    <h1>Create Wallet</h1>
+    <p class="subtitle">Generate a new Ethereum wallet with Web3</p>
+
+    <div class="warning-box">
+        ⚠ Save your private key and keystore file securely. Anyone with access to them controls your wallet. Never share them.
+    </div>
+
+    <button id="createBtn">Generate New Wallet</button>
+
+    <div class="result-block" id="results">
+        <div class="field">
+            <div class="field-header">
+                <label>Wallet Address</label>
+                <button class="copy-btn" id="copyAddress">Copy</button>
+            </div>
+            <div class="value-box" id="walletAddress">—</div>
+        </div>
+        <div class="field">
+            <div class="field-header">
+                <label>Private Key</label>
+                <button class="copy-btn" id="copyKey">Copy</button>
+            </div>
+            <div class="value-box" id="privateKey">—</div>
+        </div>
+        <div class="field">
+            <div class="field-header">
+                <label>Keystore File (JSON)</label>
+                <button class="copy-btn" id="copyKeystore">Copy</button>
+            </div>
+            <div class="value-box" id="keystoreDisplay" style="max-height:120px; overflow-y:auto; font-size:0.7rem;">—</div>
+        </div>
+        <button class="download-btn" id="downloadBtn">⬇ Download Keystore File</button>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

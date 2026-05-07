@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doorman</title>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="../createWallet/index.html">Create Wallet</a>
+    <a href="../checkBalance/index.html">Check Balance</a>
+    <a href="../buyTicket/index.html">Buy Ticket</a>
+    <a href="../returnTicket/index.html">Return Ticket</a>
+    <a href="../doorman/index.html" class="active">Doorman</a>
+</nav>
+
+<div class="card">
+    <h1>Doorman</h1>
+    <p class="subtitle">Validate attendee tickets at the door</p>
+
+    <button class="connect-btn" id="connectBtn">Connect MetaMask</button>
+    <div class="wallet-display" id="walletDisplay">No wallet connected</div>
+
+    <div class="role-badge" id="roleBadge" style="display:none"></div>
+
+    <!-- Validate ticket section (doorman + owner) -->
+    <div id="validateSection" style="display:none">
+        <label for="attendeeInput">Attendee Wallet Address</label>
+        <input type="text" id="attendeeInput" placeholder="0x..." />
+
+        <button id="checkBtn" class="secondary-btn">Check Ticket</button>
+
+        <div class="ticket-result" id="ticketResult" style="display:none">
+            <div class="result-label" id="resultLabel"></div>
+            <div class="result-balance" id="resultBalance"></div>
+        </div>
+
+        <button id="validateBtn" style="display:none; margin-top: 1rem;">Validate &amp; Mark Used</button>
+    </div>
+
+    <!-- Manage doormen section (owner only) -->
+    <div id="manageSection" style="display:none">
+        <div class="section-divider"></div>
+        <h2>Manage Doormen</h2>
+        <p class="section-sub">Add or remove doorman addresses</p>
+
+        <label for="doormanInput">Doorman Wallet Address</label>
+        <input type="text" id="doormanInput" placeholder="0x..." />
+
+        <div class="button-row">
+            <button id="addBtn" class="add-btn">Add Doorman</button>
+            <button id="removeBtn" class="remove-btn">Remove Doorman</button>
+        </div>
+    </div>
+
+    <div class="status" id="status"></div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

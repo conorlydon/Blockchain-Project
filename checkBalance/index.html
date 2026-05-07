@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Balance</title>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="../createWallet/index.html">Create Wallet</a>
+    <a href="../checkBalance/index.html" class="active">Check Balance</a>
+    <a href="../buyTicket/index.html">Buy Ticket</a>
+    <a href="../returnTicket/index.html">Return Ticket</a>
+    <a href="../doorman/index.html">Doorman</a>
+</nav>
+
+<div class="card">
+    <h1>Check Balance</h1>
+    <p class="subtitle">Query crypto and ticket token balances</p>
+
+    <!-- CRYPTO BALANCE -->
+    <label for="walletAddress">Wallet Address</label>
+    <input type="text" id="walletAddress" placeholder="0x..." />
+
+    <button id="cryptoBalanceButton">Check Crypto Balance</button>
+
+    <div class="result-row" id="cryptoBalanceRow" style="display:none">
+        <span>SETH Balance</span>
+        <span id="cryptoBalance">—</span>
+    </div>
+
+    <hr class="divider">
+
+    <!-- TOKEN BALANCE -->
+    <p class="section-title">Ticket Token Balance</p>
+
+    <label for="tokenAddress">Contract Address</label>
+    <input type="text" id="tokenAddress" placeholder="0x..." value="0x378cfb1F66d8D0e3C667c79A54f05e5dd867608f" />
+
+    <button id="tokenBalanceButton">Check Ticket Balance</button>
+
+    <div id="tokenResults" style="display:none">
+        <div class="result-row">
+            <span>Ticket Balance</span>
+            <span id="tokenBalance">—</span>
+        </div>
+        <div class="token-grid">
+            <div class="token-cell">
+                <div class="cell-label">Name</div>
+                <div class="cell-value" id="tokenName">—</div>
+            </div>
+            <div class="token-cell">
+                <div class="cell-label">Symbol</div>
+                <div class="cell-value" id="tokenSymbol">—</div>
+            </div>
+            <div class="token-cell">
+                <div class="cell-label">Decimals</div>
+                <div class="cell-value" id="tokenDecimals">—</div>
+            </div>
+            <div class="token-cell">
+                <div class="cell-label">Total Supply</div>
+                <div class="cell-value" id="tokenTotalSupply">—</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="status" id="status"></div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

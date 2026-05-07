@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Ticket</title>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="../createWallet/index.html">Create Wallet</a>
+    <a href="../checkBalance/index.html">Check Balance</a>
+    <a href="../buyTicket/index.html" class="active">Buy Ticket</a>
+    <a href="../returnTicket/index.html">Return Ticket</a>
+    <a href="../doorman/index.html">Doorman</a>
+</nav>
+
+<div class="card">
+    <h1>Buy a Ticket</h1>
+    <p class="subtitle">Purchase event tickets using SETH</p>
+
+    <button class="connect-btn" id="connectBtn">Connect MetaMask</button>
+    <div class="wallet-display" id="walletDisplay">No wallet connected</div>
+
+    <label for="accountSelect">MetaMask Account</label>
+    <select id="accountSelect" disabled>
+        <option value="">Connect MetaMask first</option>
+    </select>
+
+    <div class="info-row">
+        <span>Ticket Price</span>
+        <span id="ticketPrice">0.01 SETH</span>
+    </div>
+
+    <div class="info-row">
+        <span>Tickets Available</span>
+        <span id="ticketsAvailable">Use Check Balance</span>
+    </div>
+
+    <div class="info-row">
+        <span>Your Ticket Balance</span>
+        <span id="yourTicketBalance">-</span>
+    </div>
+
+    <label for="amountInput">Number of Tickets</label>
+    <input type="number" id="amountInput" min="1" value="1" placeholder="Enter number of tickets" />
+
+    <div class="cost-preview">
+        <span class="cost-label">Total Cost</span>
+        <span class="cost-value" id="totalCost">0.01 SETH</span>
+    </div>
+
+    <button id="buyBtn" disabled>Buy Tickets</button>
+
+    <div class="status" id="status"></div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

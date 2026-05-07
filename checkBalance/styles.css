@@ -1,0 +1,195 @@
+:root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --border: #2a2a3a;
+    --accent: #0077ff;
+    --accent2: #7c3aed;
+    --text: #e8e8f0;
+    --muted: #666680;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-image: radial-gradient(ellipse at 20% 20%, rgba(124,58,237,0.08) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 80%, rgba(0,255,136,0.05) 0%, transparent 60%);
+}
+
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+nav a:hover { color: var(--accent); }
+nav a.active { color: var(--accent); }
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 520px;
+    margin-top: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 2rem;
+}
+
+label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+}
+
+input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+input:focus { border-color: var(--accent); }
+
+button {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent2), #5b21b6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-bottom: 1rem;
+}
+
+button:hover { opacity: 0.9; }
+button:active { transform: scale(0.99); }
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,255,136,0.05);
+    border: 1px solid rgba(0,255,136,0.15);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+}
+
+.result-row span:first-child { color: var(--muted); }
+.result-row span:last-child { color: var(--accent); font-weight: 700; }
+
+.section-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.5rem 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.token-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.token-cell {
+    background: rgba(124,58,237,0.06);
+    border: 1px solid rgba(124,58,237,0.15);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+}
+
+.token-cell .cell-label { color: var(--muted); margin-bottom: 0.3rem; }
+.token-cell .cell-value { color: #a78bfa; font-weight: 700; word-break: break-all; }
+
+.status {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    display: none;
+}
+
+.status.error {
+    display: block;
+    background: rgba(255,60,60,0.08);
+    border: 1px solid rgba(255,60,60,0.25);
+    color: #ff6060;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+}
