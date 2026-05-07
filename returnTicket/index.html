@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Ticket</title>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="../createWallet/index.html">Create Wallet</a>
+    <a href="../checkBalance/index.html">Check Balance</a>
+    <a href="../buyTicket/index.html">Buy Ticket</a>
+    <a href="../returnTicket/index.html" class="active">Return Ticket</a>
+    <a href="../doorman/index.html">Doorman</a>
+</nav>
+
+<div class="card">
+    <h1>Return a Ticket</h1>
+    <p class="subtitle">Transfer your ticket back to the vendor</p>
+
+    <button class="connect-btn" id="connectBtn">Connect MetaMask</button>
+    <div class="wallet-display" id="walletDisplay">No wallet connected</div>
+
+    <label for="accountSelect">MetaMask Account</label>
+    <select id="accountSelect" disabled>
+        <option value="">Connect MetaMask first</option>
+    </select>
+
+    <div class="info-row">
+        <span>Your Ticket Balance</span>
+        <span id="ticketBalance">-</span>
+    </div>
+
+    <div class="info-row">
+        <span>Ticket Price (refund value)</span>
+        <span id="ticketPrice">-</span>
+    </div>
+
+    <div class="warning-box">
+        ⚠ Returning tickets transfers them back to the vendor. This action cannot be undone. No automatic refund is issued — contact the vendor for reimbursement.
+    </div>
+
+    <label for="amountInput">Number of Tickets to Return</label>
+    <input type="number" id="amountInput" min="1" value="1" placeholder="Enter number of tickets" />
+
+    <button id="returnBtn" disabled>Return Tickets</button>
+
+    <div class="status" id="status"></div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
