@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketToken DApp</title>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #13131a;
+            --border: #2a2a3a;
+            --accent: #00ff88;
+            --accent2: #7c3aed;
+            --text: #e8e8f0;
+            --muted: #666680;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Syne', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-image: radial-gradient(ellipse at 20% 20%, rgba(124,58,237,0.08) 0%, transparent 60%),
+                              radial-gradient(ellipse at 80% 80%, rgba(0,255,136,0.05) 0%, transparent 60%);
+        }
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: rgba(10,10,15,0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--accent); }
+        nav a.active { color: var(--accent); }
+        .hero {
+            text-align: center;
+            margin-top: 5rem;
+            margin-bottom: 3rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+        .hero p {
+            color: var(--muted);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            width: 100%;
+            max-width: 900px;
+        }
+        .tile {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.15s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .tile::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .tile:hover { border-color: var(--accent2); transform: translateY(-3px); }
+        .tile:hover::before { opacity: 1; }
+        .tile-icon { font-size: 1.8rem; }
+        .tile-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+        .tile-desc {
+            color: var(--muted);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            line-height: 1.6;
+        }
+        .contract-info {
+            margin-top: 2.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-align: center;
+        }
+        .contract-info span {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="./index.html" class="active">Home</a>
+    <a href="./createWallet/index.html">Create Wallet</a>
+    <a href="./checkBalance/index.html">Check Balance</a>
+    <a href="./buyTicket/index.html">Buy Ticket</a>
+    <a href="./returnTicket/index.html">Return Ticket</a>
+    <a href="./doorman/index.html">Doorman</a>
+</nav>
+
+<div class="hero">
+    <h1>TicketToken DApp</h1>
+    <p>A decentralised event ticketing system on the Ethereum Sepolia Testnet</p>
+</div>
+
+<div class="grid">
+    <a class="tile" href="./createWallet/index.html">
+        <div class="tile-icon">🔑</div>
+        <div class="tile-title">Create Wallet</div>
+        <div class="tile-desc">Generate a new Ethereum wallet and download your keystore file.</div>
+    </a>
+    <a class="tile" href="./checkBalance/index.html">
+        <div class="tile-icon">💰</div>
+        <div class="tile-title">Check Balance</div>
+        <div class="tile-desc">View SETH and ticket token balances for any wallet address.</div>
+    </a>
+    <a class="tile" href="./buyTicket/index.html">
+        <div class="tile-icon">🎟</div>
+        <div class="tile-title">Buy Ticket</div>
+        <div class="tile-desc">Purchase TKT tokens using SETH via the smart contract.</div>
+    </a>
+    <a class="tile" href="./returnTicket/index.html">
+        <div class="tile-icon">↩</div>
+        <div class="tile-title">Return Ticket</div>
+        <div class="tile-desc">Transfer your ticket tokens back to the vendor.</div>
+    </a>
+    <a class="tile" href="./doorman/index.html">
+        <div class="tile-icon">🚪</div>
+        <div class="tile-title">Doorman</div>
+        <div class="tile-desc">Validate attendee tickets and manage doorman roles at the venue.</div>
+    </a>
+</div>
+
+<div class="contract-info">
+    Contract: <span>0x378cfb1F66d8D0e3C667c79A54f05e5dd867608f</span> &mdash; Sepolia Testnet
+</div>
+
+</body>
+</html>
