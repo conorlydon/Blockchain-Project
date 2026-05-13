@@ -27,6 +27,14 @@ document.getElementById('createBtn').addEventListener('click', () => {
 document.getElementById('copyAddress').addEventListener('click', function() {
     copyText(document.getElementById('walletAddress').textContent, this);
 });
+document.getElementById('toggleKey').addEventListener('click', function() {
+    const el = document.getElementById('privateKey');
+    const hidden = el.style.filter === 'blur(6px)';
+    el.style.filter = hidden ? 'none' : 'blur(6px)';
+    el.style.userSelect = hidden ? 'text' : 'none';
+    this.textContent = hidden ? 'Hide' : 'Show';
+});
+
 document.getElementById('copyKey').addEventListener('click', function() {
     copyText(document.getElementById('privateKey').textContent, this);
 });

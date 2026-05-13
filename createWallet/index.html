@@ -39,9 +39,12 @@
         <div class="field">
             <div class="field-header">
                 <label>Private Key</label>
-                <button class="copy-btn" id="copyKey">Copy</button>
+                <div style="display:flex;gap:0.5rem;">
+                    <button class="copy-btn" id="toggleKey">Show</button>
+                    <button class="copy-btn" id="copyKey">Copy</button>
+                </div>
             </div>
-            <div class="value-box" id="privateKey">—</div>
+            <div class="value-box" id="privateKey" style="filter:blur(6px);user-select:none;">—</div>
         </div>
         <div class="field">
             <div class="field-header">
